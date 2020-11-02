@@ -2,8 +2,10 @@ import React, { useContext, useState } from 'react';
 import ContactContext from '../../context/contact/contactContext';
 
 const ContactForm = () => {
+	// Context
 	const contactContext = useContext(ContactContext);
 
+	// State
 	const [contact, setContact] = useState({
 		name: '',
 		email: '',
@@ -11,8 +13,10 @@ const ContactForm = () => {
 		type: 'personal',
 	});
 
+	// Props
 	const { name, email, phone, type } = contact;
 
+	// Helper Functions
 	const onChange = (e) => setContact({ ...contact, [e.target.name]: e.target.value });
 
 	const onSubmit = (e) => {
