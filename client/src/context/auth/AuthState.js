@@ -64,7 +64,28 @@ const AuthState = (props) => {
 	};
 
 	// Login User
-	const loginUser = () => {};
+	const login = async (formData) => {
+		const config = {
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		};
+
+		try {
+			const res = await axios.post('api/auth', formData, config);
+			dispatch({
+				type: LOGIN_SUCCESS,
+				payload: res.data,
+			});
+
+			loadUser();
+		} catch (error) {
+			dispatch({
+				type: LOGIN_FAIL,
+				payload: error.response.data.message,
+			});
+		}
+	};
 
 	// Logout
 	const logoutUser = () => {};
@@ -81,7 +102,7 @@ const AuthState = (props) => {
 				user: state.user,
 				error: state.error,
 				register,
-				loginUser,
+				login,
 				logoutUser,
 				loadUser,
 				clearErrors,
