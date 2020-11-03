@@ -27,7 +27,6 @@ const ContactForm = () => {
 		type: 'personal',
 	});
 
-	// Props
 	const { name, email, phone, type } = contact;
 
 	// Helper Functions
